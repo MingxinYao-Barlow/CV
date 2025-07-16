@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姚明鑫 Mingxin Yao</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --text: #333;
+            --text-light: #777;
+            --light-gray: #f5f5f5;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏 */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        /* 主要内容区域 */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+        }
+        
+        /* 个人信息区域 */
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .profile-text {
+            flex: 1;
+        }
+        
+        .profile-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .profile-text p {
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* 研究兴趣 */
+        .interest-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .interest-item {
+            background-color: var(--light-gray);
+            padding: 15px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        
+        /* 学术成果 */
+        .pub-list {
+            margin-top: 30px;
+        }
+        
+        .pub-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pub-item:last-child {
+            border-bottom: none;
+        }
+        
+        .pub-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .pub-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .pub-authors {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .pub-journal {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .pub-badge {
+            display: inline-block;
+            background-color: var(--light-gray);
+            color: var(--secondary);
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-top: 5px;
+        }
+        
+        /* 项目参与 */
+        .project-list {
+            margin-top: 30px;
+        }
+        
+        .project-item {
+            margin-bottom: 25px;
+        }
+        
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .project-org {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            display: block;
+            font-size: 0.9rem;
+        }
+        
+        /* 联系方式 */
+        .contact-info {
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            width: 30px;
+            color: var(--secondary);
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .social-link {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .profile {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Mingxin Yao</a>
+                <ul class="nav-links">
+                    <li><a href="#about">关于我</a></li>
+                    <li><a href="#research">研究兴趣</a></li>
+                    <li><a href="#publications">学术成果</a></li>
+                    <li><a href="#projects">项目参与</a></li>
+                    <li><a href="#contact">联系方式</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 个人信息 -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="profile">
+                <div class="profile-text">
+                    <h1>姚明鑫 博士</h1>
+                    <p>姚明鑫，南京大学外国语言学及应用语言学博士</p>
+                    <p>Scientometrics、Applied Linguistics、Written Communication、Linguistics Vanguard等SSCI期刊审稿人。</p>
+                    <p>研究兴趣为语用学、学术写作、话语分析、语料库语言学及计算语言学。</p>
+                </div>
+                <div class="profile-img">
+                    <img src="/Users/yaomingxin/Desktop/WX20250716-151200@2x.png" alt="姚明鑫">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 研究兴趣 -->
+    <section class="section" id="research">
+        <div class="container">
+            <div class="section-title">
+                <h2>研究兴趣</h2>
+                <p>我的主要研究领域与方向</p>
+            </div>
+            <div class="interest-list">
+                <div class="interest-item">语用学</div>
+                <div class="interest-item">学术写作</div>
+                <div class="interest-item">话语分析</div>
+                <div class="interest-item">语料库语言学</div>
+                <div class="interest-item">计算语言学</div>
+                <div class="interest-item">科学计量学</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学术成果 -->
+    <section class="section" id="publications">
+        <div class="container">
+            <div class="section-title">
+                <h2>学术成果</h2>
+                <p>代表性论文与出版物</p>
+            </div>
+            <div class="pub-list">
+                <!-- 论文1 -->
+                <div class="pub-item">
+                    <div class="pub-header">
+                        <span class="pub-year">2020</span>
+                    </div>
+                    <h3 class="pub-title">当代中国寒暄行为城乡差异调查与分析</h3>
+                    <p class="pub-authors">姚明鑫、王佳云</p>
+                    <span class="pub-journal">江苏外语教学研究(05)</span>
+                    <div>
+                        <span class="pub-badge">会议集刊</span>
+                        <span class="pub-badge">第一作者</span>
+                    </div>
+                </div>
+                
+                <!-- 论文2 -->
+                <div class="pub-item">
+                    <div class="pub-header">
+                        <span class="pub-year">2022</span>
+                    </div>
+                    <h3 class="pub-title">Is academic writing becoming more positive? A large-scale diachronic case study of Science research articles across 25 years</h3>
+                    <p class="pub-authors">Yuan, Z. M., & Yao, M.</p>
+                    <span class="pub-journal">Scientometrics, 127(11), 6191-6207</span>
+                    <div>
+                        <span class="pub-badge">SSCI Q2</span>
+                        <span class="pub-badge">通讯作者</span>
+                    </div>
+                </div>
+                
+                <!-- 论文3 -->
+                <div class="pub-item">
+                    <div class="pub-header">
+                        <span class="pub-year">2023</span>
+                    </div>
+                    <h3 class="pub-title">Promoting research by reducing uncertainty in academic writing: a large-scale diachronic case study on hedging in Science research articles across 25 years</h3>
+                    <p class="pub-authors">Yao, M., Wei, Y., & Wang, H.</p>
+                    <span class="pub-journal">Scientometrics, 128(8), 4541-4558</span>
+                    <div>
+                        <span class="pub-badge">SSCI Q1</span>
+                        <span class="pub-badge">第一作者</span>
+                    </div>
+                </div>
+                
+                <!-- 论文4 -->
+                <div class="pub-item">
+                    <div class="pub-header">
+                        <span class="pub-year">2024</span>
+                    </div>
+                    <h3 class="pub-title">公共事件语境下微博媒体话语的关系管理研究</h3>
+                    <p class="pub-authors">姚明鑫、陈新仁</p>
+                    <span class="pub-journal">外语教学(02), 27-34</span>
+                    <div>
+                        <span class="pub-badge">CSSCI</span>
+                        <span class="pub-badge">第一作者</span>
+                    </div>
+                </div>
+                
+                <!-- 论文5 -->
+                <div class="pub-item">
+                    <div class="pub-header">
+                        <span class="pub-year">2024</span>
+                    </div>
+                    <h3 class="pub-title">在线汉英平行语料库软件操作系统OCEC的设计与开发</h3>
+                    <p class="pub-authors">姚明鑫</p>
+                    <span class="pub-journal">现代计算机(23),176-181</span>
+                    <div>
+                        <span class="pub-badge">独作</span>
+                    </div>
+                </div>
+                
+                <!-- 论文6 -->
+                <div class="pub-item">
+                    <div class="pub-header">
+                        <span class="pub-year">2024</span>
+                    </div>
+                    <h3 class="pub-title">Exploring the Interpersonal Functions of Negation in Science Writing Across 35 Years</h3>
+                    <p class="pub-authors">Wang, H., Wei, Y., & Yao, M.</p>
+                    <span class="pub-journal">Written Communication, 41(4), 664-692</span>
+                    <div>
+                        <span class="pub-badge">SSCI Q2</span>
+                        <span class="pub-badge">通讯作者</span>
+                    </div>
+                </div>
+                
+                <!-- 教材1 -->
+                <div class="pub-item">
+                    <div class="pub-header">
+                        <span class="pub-year">2024</span>
+                    </div>
+                    <h3 class="pub-title">外国语言学研究方法</h3>
+                    <p class="pub-authors">陈新仁主编；姚明鑫等编</p>
+                    <span class="pub-journal">上海: 上海外语教育出版社</span>
+                    <div>
+                        <span class="pub-badge">研究生核心教材</span>
+                        <span class="pub-badge">参编/排名第二</span>
+                    </div>
+                </div>     
+
+                <!-- 论文7 -->
+                <div class="pub-item">
+                    <div class="pub-header">
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <h3 class="pub-title">The "old aunties (lǎo ā yí)" are not old: Chinese young women's attitudes toward aging and old age through using the generalized kinship term on social media</h3>
+                    <p class="pub-authors">Ren, J. J., & Yao, M.</p>
+                    <span class="pub-journal">Journal of Aging Studies [Online]</span>
+                    <div>
+                        <span class="pub-badge">SSCI Q2</span>
+                        <span class="pub-badge">通讯作者</span>
+                        <span class="pub-badge">在线发表</span>
+                    </div>
+                </div>
+                
+                <!-- 论文8 -->
+                <div class="pub-item">
+                    <div class="pub-header">
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <h3 class="pub-title">The Art of Positive Reporting in Media Discourse: Time Magazine's Linguistic Positivity Bias Over the 20th Century</h3>
+                    <p class="pub-authors">Yuan, Z. M., Chao, J. & Yao, M.</p>
+                    <span class="pub-journal">Digital Scholarship in the Humanities [Online]</span>
+                    <div>
+                        <span class="pub-badge">SSCI Q1</span>
+                        <span class="pub-badge">通讯作者</span>
+                        <span class="pub-badge">在线发表</span>
+                    </div>
+                </div>
+                
+                <!-- 论文9 -->
+                <div class="pub-item">
+                    <div class="pub-header">
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <h3 class="pub-title">Authorial presence in academic writing: A diachronic study of self-reference in science abstracts and full texts</h3>
+                    <p class="pub-authors">Wei, Y., Cheng, R., Yao, M.</p>
+                    <span class="pub-journal">Journal of English for Research Publication Purposes [Accepted]</span>
+                    <div>
+                        <span class="pub-badge">Scopus</span>
+                        <span class="pub-badge">通讯作者</span>
+                        <span class="pub-badge">已录用</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目参与 -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>项目参与</h2>
+                <p>参与的研究项目与课题</p>
+            </div>
+            <div class="project-list">
+                <!-- 项目1 -->
+                <div class="project-item">
+                    <h3 class="project-title">网络空间社会治理语言问题研究</h3>
+                    <span class="project-org">国家社科基金2020重大项目</span>
+                </div>
+                
+                <!-- 项目2 -->
+                <div class="project-item">
+                    <h3 class="project-title">回应突发舆情的政务微博话语及政务语言能力建设研究</h3>
+                    <span class="project-org">国家社科基金2020重点项目</span>
+                </div>
+                
+                <!-- 项目3 -->
+                <div class="project-item">
+                    <h3 class="project-title">语言文字一流学科建设现状、面临形势和发展方向研究</h3>
+                    <span class="project-org">国家语委"十四五"科研规划2024年部级重点项目</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>联系方式</h2>
+                <p>欢迎学术交流与合作</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3>电子邮箱</h3>
+                        <p><a href="mailto:yao_mingx@163.com">yao_mingx@163.com</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div>
+                        <h3>机构</h3>
+                        <p>南京大学外国语学院</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.researchgate.net/profile/Mingxin-Yao" class="social-link">ResearchGate</a> |
+                <a href="#" class="social-link">Google Scholar</a> |
+                <a href="https://orcid.org/0000-0002-4763-9413" class="social-link">ORCID</a>
+            </div>
+            <p class="copyright">&copy; 2025 姚明鑫. 保留所有权利。</p>
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
