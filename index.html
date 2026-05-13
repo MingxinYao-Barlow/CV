@@ -2,610 +2,804 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>姚明鑫 Mingxin Yao</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>姚明鑫</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --text: #333;
-            --text-light: #777;
-            --light-gray: #f5f5f5;
-            --white: #fff;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        body {
-            font-family: 'Noto Sans SC', sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            background-color: var(--white);
+
+        :root {
+            --primary: #1e2f3e;
+            --primary-dark: #0f1a24;
+            --secondary: #2c7da0;
+            --accent: #61a5c2;
+            --text-main: #1e2f3e;
+            --text-muted: #4a627a;
+            --light-bg: #f8fafc;
+            --border-light: #e9edf2;
+            --card-shadow: 0 2px 6px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.05);
+            --hover-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            --transition: all 0.2s ease;
         }
-        
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+            color: var(--text-main);
+            line-height: 1.45;
+            background-color: white;
+            scroll-behavior: smooth;
+        }
+
         .container {
-            max-width: 1000px;
+            max-width: 960px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        /* 导航栏 */
+
+        /* 紧凑布局核心：减少留白 */
+        section {
+            padding: 48px 0 52px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .section-title h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+            margin-bottom: 6px;
+        }
+        .section-title p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* 紧凑导航 */
         header {
             background-color: var(--primary);
-            color: white;
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
+            backdrop-filter: blur(0px);
+            position: sticky;
             top: 0;
+            width: 100%;
             z-index: 1000;
+            transition: all 0.25s;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
-        
+        header.scrolled {
+            background-color: rgba(30, 47, 62, 0.96);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            padding: 12px 0;
         }
-        
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 700;
+            letter-spacing: -0.2px;
             color: white;
             text-decoration: none;
+            background: rgba(255,255,255,0.1);
+            padding: 4px 12px;
+            border-radius: 40px;
+            transition: var(--transition);
         }
-        
+        .logo:hover {
+            background: rgba(255,255,255,0.2);
+        }
         .nav-links {
             display: flex;
             list-style: none;
+            gap: 8px;
+            flex-wrap: wrap;
         }
-        
         .nav-links li {
-            margin-left: 25px;
+            margin: 0;
         }
-        
         .nav-links a {
-            color: white;
+            color: #eef4ff;
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.9rem;
+            padding: 6px 12px;
+            border-radius: 30px;
+            transition: var(--transition);
         }
-        
-        /* 主要内容区域 */
-        section {
-            padding: 80px 0;
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.15);
+            color: white;
         }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .section-title h2 {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
-        .section-title p {
-            color: var(--text-light);
-        }
-        
-        /* 个人信息区域 */
+
+        /* 个人资料区 紧凑对齐 */
         .profile {
             display: flex;
             align-items: center;
-            gap: 40px;
-            margin-top: 60px;
+            gap: 32px;
+            margin-top: 20px;
         }
-        
-        .profile-text {
-            flex: 1;
-        }
-        
         .profile-text h1 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
             color: var(--primary);
+            margin-bottom: 8px;
         }
-        
         .profile-text p {
-            margin-bottom: 20px;
-            color: var(--text);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
         }
-        
+        .profile-text p:first-of-type {
+            font-weight: 500;
+            color: var(--secondary);
+        }
         .profile-img {
-            width: 200px;
-            height: 200px;
+            flex-shrink: 0;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            overflow: hidden;
+            background: linear-gradient(135deg, #d9e2ec, #cbd5e1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: var(--transition);
         }
-        
-        .profile-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .profile-img:hover {
+            transform: scale(1.02);
         }
-        
-        /* 研究兴趣 */
+        .avatar-placeholder {
+            font-size: 3rem;
+            font-weight: 500;
+            color: var(--primary);
+            background: white;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+            box-shadow: inset 0 1px 2px #0001, 0 1px 2px white;
+        }
+
+        /* 研究兴趣 紧凑标签 */
         .interest-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 12px;
             justify-content: center;
+            margin: 8px 0 4px;
         }
-        
         .interest-item {
-            background-color: var(--light-gray);
-            padding: 15px 20px;
-            border-radius: 5px;
+            background-color: var(--light-bg);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
             font-weight: 500;
+            color: var(--secondary);
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+            cursor: default;
         }
-        
-        /* 学术成果 */
+        .interest-item:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* 论文列表紧凑 + 卡片hover */
         .pub-list {
-            margin-top: 30px;
+            margin-top: 16px;
         }
-        
         .pub-item {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+            padding: 16px 0 14px;
+            border-bottom: 1px solid var(--border-light);
+            transition: var(--transition);
+            border-radius: 12px;
         }
-        
-        .pub-item:last-child {
-            border-bottom: none;
+        .pub-item:hover {
+            background: #fefefe;
+            padding-left: 10px;
+            padding-right: 6px;
+            background: var(--light-bg);
+            border-radius: 14px;
+            box-shadow: var(--card-shadow);
         }
-        
         .pub-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
+            align-items: baseline;
+            margin-bottom: 6px;
         }
-        
+        .pub-year {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: #eef2f8;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
         .pub-title {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            line-height: 1.4;
+            color: var(--primary);
         }
-        
         .pub-authors {
+            font-size: 0.85rem;
             color: var(--secondary);
-            font-size: 0.9rem;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
-        
         .pub-journal {
+            font-size: 0.8rem;
+            color: var(--text-muted);
             font-style: italic;
-            color: var(--text-light);
-            margin-bottom: 10px;
-            display: block;
+            margin-bottom: 8px;
+            display: inline-block;
         }
-        
         .pub-badge {
             display: inline-block;
-            background-color: var(--light-gray);
-            color: var(--secondary);
+            background: white;
+            border: 1px solid #e2e8f0;
+            color: #2c7da0;
             padding: 2px 8px;
-            border-radius: 3px;
-            font-size: 0.8rem;
-            margin-right: 5px;
-            margin-top: 5px;
-        }
-        
-        /* 项目参与 */
-        .project-list {
-            margin-top: 30px;
-        }
-        
-        .project-item {
-            margin-bottom: 25px;
-        }
-        
-        .project-title {
-            font-size: 1.1rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
             font-weight: 500;
-            margin-bottom: 5px;
+            margin-right: 6px;
+            margin-top: 4px;
         }
         
-        .project-org {
-            color: var(--secondary);
-            margin-bottom: 10px;
-            display: block;
-            font-size: 0.9rem;
-        }
-        
-        /* 联系方式 */
-        .contact-info {
-            margin-top: 30px;
-        }
-        
-        .contact-item {
+        /* 筛选栏紧凑 交互核心 */
+        .filter-bar {
             display: flex;
-            margin-bottom: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 28px;
+            margin-top: 12px;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 12px;
         }
-        
-        .contact-icon {
-            width: 30px;
-            color: var(--secondary);
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
         }
-        
-        /* 页脚 */
-        footer {
-            background-color: var(--primary);
+        .filter-btn.active {
+            background: var(--secondary);
             color: white;
-            padding: 20px 0;
+            border-color: var(--secondary);
+        }
+        .filter-btn:hover:not(.active) {
+            background: #eef2ff;
+            border-color: #cbd5e1;
+        }
+        .pub-count {
+            font-size: 0.75rem;
+            margin-left: 8px;
+            background: #eef2fa;
+            padding: 0 6px;
+            border-radius: 30px;
+        }
+
+        /* 项目部分紧凑 */
+        .project-list {
+            margin-top: 12px;
+        }
+        .project-item {
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--border-light);
+        }
+        .project-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .project-org {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            display: inline-block;
+            background: #f1f5f9;
+            padding: 2px 10px;
+            border-radius: 20px;
+        }
+
+        /* 联系方式 紧凑网格 */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 20px;
+            justify-content: space-between;
+        }
+        .contact-item {
+            flex: 1;
+            min-width: 180px;
+            background: var(--light-bg);
+            padding: 14px 18px;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+        .contact-item:hover {
+            transform: translateY(-3px);
+            background: white;
+            box-shadow: var(--hover-shadow);
+        }
+        .contact-icon {
+            width: 32px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        .contact-item h3 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .contact-item p, .contact-item a {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+        .contact-item a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        /* 页脚 紧凑 */
+        footer {
+            background-color: var(--primary-dark);
+            padding: 24px 0 20px;
             text-align: center;
         }
-        
         .social-links {
             display: flex;
             justify-content: center;
-            margin-bottom: 15px;
+            gap: 20px;
+            margin-bottom: 12px;
         }
-        
         .social-link {
-            color: white;
-            margin: 0 10px;
+            color: rgba(255,255,255,0.7);
             text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
         }
-        
+        .social-link:hover {
+            color: white;
+        }
         .copyright {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+            font-size: 0.75rem;
+            opacity: 0.6;
         }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
+
+        /* 返回顶部 + 交互微件 */
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--primary);
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 99;
+            border: none;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* 响应式紧凑 */
+        @media (max-width: 720px) {
+            .container {
+                padding: 0 16px;
+            }
+            section {
+                padding: 38px 0;
+            }
             .profile {
                 flex-direction: column;
                 text-align: center;
+                gap: 20px;
             }
-            
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
             .nav-links {
-                display: none;
+                justify-content: center;
+                margin-top: 8px;
+                width: 100%;
             }
+            nav {
+                justify-content: center;
+                gap: 4px;
+            }
+            .logo {
+                margin-bottom: 6px;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 14px;
+            }
+            .pub-item:hover {
+                padding-left: 0;
+            }
+            .filter-btn {
+                padding: 4px 12px;
+                font-size: 0.75rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .pub-title {
+                font-size: 0.9rem;
+            }
+            .interest-item {
+                padding: 4px 12px;
+                font-size: 0.75rem;
+            }
+        }
+        a {
+            transition: var(--transition);
+        }
+        .profile-text p:last-of-type {
+            margin-bottom: 0;
         }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
     <header id="header">
         <div class="container">
             <nav>
                 <a href="#" class="logo">Mingxin Yao</a>
                 <ul class="nav-links">
-                    <li><a href="#about">关于我</a></li>
+                    <li><a href="#about">关于</a></li>
                     <li><a href="#research">研究兴趣</a></li>
                     <li><a href="#publications">学术成果</a></li>
-                    <li><a href="#projects">项目参与</a></li>
-                    <li><a href="#contact">联系方式</a></li>
+                    <li><a href="#projects">项目</a></li>
+                    <li><a href="#contact">联系</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- 个人信息 -->
-    <section class="section" id="about">
+    <section id="about">
         <div class="container">
             <div class="profile">
                 <div class="profile-text">
-                    <h1>姚明鑫</h1>
-                    <p>博士（南京大学外国语言学及应用语言学）</p>
-                    <p>Scientometrics、Applied Linguistics、Written Communication、Linguistics Vanguard、Cognition and Emotion、Humanities and Social Sciences Communications、Discover Computing等SSCI、SCI期刊审稿人。</p>
-                    <p>研究兴趣为语用学、学术写作、话语分析、语料库语言学及计算语言学。近年来主要开展基于大规模语料库的学术话语、媒体话语历时研究。成果发表于Scientometrics、Written Communication、Digital Scholarship in the Humanitites、Journal of Aging Studies、Ethics & Behavior、Corpora、《外语教学》等国内外核心期刊。</p>
+                    <h1>姚明鑫 <span style="font-weight: 400; font-size: 1.2rem;">博士</span></h1>
+                    <p>南京大学外国语言学及应用语言学博士 | 四川外国语大学商务英语学院讲师</p>
+                    <p>Scientometrics, Applied Linguistics, Written Communication, Linguistics Vanguard, Cognition and Emotion, Humanities and Social Sciences Communications, Discover Computing等SSCI/SCI期刊审稿人。</p>
+                    <p>研究兴趣为语用学、学术写作、话语分析、语料库语言学及计算语言学。近年来主要开展基于大规模语料库的学术话语、媒体话语历时研究。成果发表于Scientometrics, Written Communication, Digital Scholarship in the Humanities, Journal of Aging Studies, Ethics & Behavior, Corpora,《外语教学》等国内外核心期刊。</p>
                 </div>
                 <div class="profile-img">
-                    <img src="img.jpg" alt="姚明鑫">
+                    <div class="avatar-placeholder">
+                        <i class="fas fa-user-graduate" style="font-size: 3rem; color: #2c7da0;"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 研究兴趣 -->
-    <section class="section" id="research">
-        <div class="container">
-            <div class="section-title">
-                <h2>研究兴趣</h2>
-                <p>我的主要研究领域与方向</p>
-            </div>
-            <div class="interest-list">
-                <div class="interest-item">语用学</div>
-                <div class="interest-item">学术写作</div>
-                <div class="interest-item">话语分析</div>
-                <div class="interest-item">语料库语言学</div>
-                <div class="interest-item">计算语言学</div>
-                <div class="interest-item">科学计量学</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 学术成果 -->
-    <section class="section" id="publications">
+    <!-- 学术成果 带筛选交互 -->
+    <section id="publications">
         <div class="container">
             <div class="section-title">
                 <h2>学术成果</h2>
-                <p>代表性论文与出版物</p>
+                <p>代表性论文 · 专著章节 · 教材</p>
             </div>
-            <div class="pub-list">
-                <!-- 论文1 -->
-                <div class="pub-item">
-                    <div class="pub-header">
-                        <span class="pub-year">2020</span>
-                    </div>
+            <!-- 筛选栏 交互核心 -->
+            <div class="filter-bar" id="filterBar">
+                <button class="filter-btn active" data-filter="all">全部 <span class="pub-count" id="countAll">0</span></button>
+                <button class="filter-btn" data-filter="first_correspond">第一/通讯作者 <span class="pub-count" id="countFirstCorr">0</span></button>
+                <button class="filter-btn" data-filter="ssci_sci">SSCI/SCI/CSSCI/ESCI<span class="pub-count" id="countSSCI">0</span></button>
+                <button class="filter-btn" data-filter="domestic_core">国内发表<span class="pub-count" id="countDomestic">0</span></button>
+                <button class="filter-btn" data-filter="recent">2024后(含) <span class="pub-count" id="countRecent">0</span></button>
+            </div>
+            <div class="pub-list" id="pubList">
+                <!-- 论文列表，保留所有原有信息 -->
+                <div class="pub-item" data-year="2020" data-type="domestic" data-role="first">
+                    <div class="pub-header"><span class="pub-year">2020</span></div>
                     <h3 class="pub-title">当代中国寒暄行为城乡差异调查与分析</h3>
                     <p class="pub-authors">姚明鑫、王佳云</p>
                     <span class="pub-journal">江苏外语教学研究(05)</span>
-                    <div>
-                        <span class="pub-badge">会议集刊</span>
-                        <span class="pub-badge">第一作者</span>
-                    </div>
+                    <div><span class="pub-badge">会议集刊</span><span class="pub-badge">第一作者</span></div>
                 </div>
-                
-                <!-- 论文2 -->
-                <div class="pub-item">
-                    <div class="pub-header">
-                        <span class="pub-year">2022</span>
-                    </div>
+                <div class="pub-item" data-year="2022" data-type="ssci" data-role="correspond">
+                    <div class="pub-header"><span class="pub-year">2022</span></div>
                     <h3 class="pub-title">Is academic writing becoming more positive? A large-scale diachronic case study of Science research articles across 25 years</h3>
                     <p class="pub-authors">Yuan, Z. M., & Yao, M.</p>
                     <span class="pub-journal">Scientometrics, 127(11), 6191-6207</span>
-                    <div>
-                        <span class="pub-badge">SSCI Q2</span>
-                        <span class="pub-badge">通讯作者</span>
-                    </div>
+                    <div><span class="pub-badge">SSCI Q2</span><span class="pub-badge">通讯作者</span></div>
                 </div>
-                
-                <!-- 论文3 -->
-                <div class="pub-item">
-                    <div class="pub-header">
-                        <span class="pub-year">2023</span>
-                    </div>
+                <div class="pub-item" data-year="2023" data-type="ssci" data-role="first">
+                    <div class="pub-header"><span class="pub-year">2023</span></div>
                     <h3 class="pub-title">Promoting research by reducing uncertainty in academic writing: a large-scale diachronic case study on hedging in Science research articles across 25 years</h3>
                     <p class="pub-authors">Yao, M., Wei, Y., & Wang, H.</p>
                     <span class="pub-journal">Scientometrics, 128(8), 4541-4558</span>
-                    <div>
-                        <span class="pub-badge">SSCI Q1</span>
-                        <span class="pub-badge">第一作者</span>
-                    </div>
+                    <div><span class="pub-badge">SSCI Q1</span><span class="pub-badge">第一作者</span></div>
                 </div>
-                
-                <!-- 论文4 -->
-                <div class="pub-item">
-                    <div class="pub-header">
-                        <span class="pub-year">2024</span>
-                    </div>
+                <div class="pub-item" data-year="2024" data-type="domestic" data-role="first">
+                    <div class="pub-header"><span class="pub-year">2024</span></div>
                     <h3 class="pub-title">公共事件语境下微博媒体话语的关系管理研究</h3>
                     <p class="pub-authors">姚明鑫、陈新仁</p>
                     <span class="pub-journal">外语教学(02), 27-34</span>
-                    <div>
-                        <span class="pub-badge">CSSCI</span>
-                        <span class="pub-badge">第一作者</span>
-                    </div>
+                    <div><span class="pub-badge">CSSCI</span><span class="pub-badge">第一作者</span></div>
                 </div>
-                
-                <!-- 论文5 -->
-                <div class="pub-item">
-                    <div class="pub-header">
-                        <span class="pub-year">2024</span>
-                    </div>
+                <div class="pub-item" data-year="2024" data-type="domestic" data-role="sole">
+                    <div class="pub-header"><span class="pub-year">2024</span></div>
                     <h3 class="pub-title">在线汉英平行语料库软件操作系统OCEC的设计与开发</h3>
                     <p class="pub-authors">姚明鑫</p>
                     <span class="pub-journal">现代计算机(23),176-181</span>
-                    <div>
-                        <span class="pub-badge">独作</span>
-                    </div>
+                    <div><span class="pub-badge">独作</span></div>
                 </div>
-                
-                <!-- 论文6 -->
-                <div class="pub-item">
-                    <div class="pub-header">
-                        <span class="pub-year">2024</span>
-                    </div>
+                <div class="pub-item" data-year="2024" data-type="ssci" data-role="correspond">
+                    <div class="pub-header"><span class="pub-year">2024</span></div>
                     <h3 class="pub-title">Exploring the Interpersonal Functions of Negation in Science Writing Across 35 Years</h3>
                     <p class="pub-authors">Wang, H., Wei, Y., & Yao, M.</p>
                     <span class="pub-journal">Written Communication, 41(4), 664-692</span>
-                    <div>
-                        <span class="pub-badge">SSCI Q2</span>
-                        <span class="pub-badge">通讯作者</span>
-                    </div>
+                    <div><span class="pub-badge">SSCI Q2</span><span class="pub-badge">通讯作者</span></div>
                 </div>
-                
-                <!-- 教材1 -->
-                <div class="pub-item">
-                    <div class="pub-header">
-                        <span class="pub-year">2024</span>
-                    </div>
+                <div class="pub-item" data-year="2024" data-type="domestic" data-role="contributor">
+                    <div class="pub-header"><span class="pub-year">2024</span></div>
                     <h3 class="pub-title">外国语言学研究方法</h3>
                     <p class="pub-authors">陈新仁主编；姚明鑫等编</p>
                     <span class="pub-journal">上海: 上海外语教育出版社</span>
-                    <div>
-                        <span class="pub-badge">研究生核心教材</span>
-                        <span class="pub-badge">参编/排名第二</span>
-                    </div>
-                </div>     
-
-                <!-- 论文7 -->
-                <div class="pub-item">
-                    <div class="pub-header">
-                        <span class="pub-year">2025</span>
-                    </div>
+                    <div><span class="pub-badge">研究生核心教材</span><span class="pub-badge">参编/排名第二</span></div>
+                </div>
+                <div class="pub-item" data-year="2025" data-type="ssci" data-role="correspond">
+                    <div class="pub-header"><span class="pub-year">2025</span></div>
                     <h3 class="pub-title">The "old aunties (lǎo ā yí)" are not old: Chinese young women's attitudes toward aging and old age through using the generalized kinship term on social media</h3>
                     <p class="pub-authors">Ren, J. J., & Yao, M.</p>
                     <span class="pub-journal">Journal of Aging Studies, 73, 101325</span>
-                    <div>
-                        <span class="pub-badge">SSCI Q2</span>
-                        <span class="pub-badge">通讯作者</span>
-                    </div>
+                    <div><span class="pub-badge">SSCI Q2</span><span class="pub-badge">通讯作者</span></div>
                 </div>
-
-                 <!-- 论文8 -->
-                <div class="pub-item">
-                    <div class="pub-header">
-                        <span class="pub-year">2025</span>
-                    </div>
+                <div class="pub-item" data-year="2025" data-type="ssci" data-role="first">
+                    <div class="pub-header"><span class="pub-year">2025</span></div>
                     <h3 class="pub-title">AI practices and ethical concerns: An analysis of undeclared uses of AI in published research articles</h3>
                     <p class="pub-authors">Yao, M., Wei, Y., & Liu, H.</p>
-                    <span class="pub-journal">Ethics & Behavior, 1-13 </span>
-                    <div>
-                        <span class="pub-badge">SSCI Q2</span>
-                        <span class="pub-badge">第一作者</span>
-                    </div>
+                    <span class="pub-journal">Ethics & Behavior, 1-13</span>
+                    <div><span class="pub-badge">SSCI Q2</span><span class="pub-badge">第一作者</span></div>
                 </div>
-                
-                <!-- 论文9 -->
-                <div class="pub-item">
-                    <div class="pub-header">
-                        <span class="pub-year">2025</span>
-                    </div>
+                <div class="pub-item" data-year="2025" data-type="ssci" data-role="correspond">
+                    <div class="pub-header"><span class="pub-year">2025</span></div>
                     <h3 class="pub-title">The Art of Positive Reporting in Media Discourse: Time Magazine's Linguistic Positivity Bias Over the 20th Century</h3>
                     <p class="pub-authors">Yuan, Z. M., Chao, J. & Yao, M.</p>
                     <span class="pub-journal">Digital Scholarship in the Humanities, fqaf039</span>
-                    <div>
-                        <span class="pub-badge">SSCI Q3</span>
-                        <span class="pub-badge">通讯作者</span>
-                    </div>
+                    <div><span class="pub-badge">SSCI Q3</span><span class="pub-badge">通讯作者</span></div>
                 </div>
-                
-                <!-- 论文10 -->
-                <div class="pub-item">
-                    <div class="pub-header">
-                        <span class="pub-year">2025</span>
-                    </div>
+                <div class="pub-item" data-year="2025" data-type="scopus" data-role="correspond">
+                    <div class="pub-header"><span class="pub-year">2025</span></div>
                     <h3 class="pub-title">Authorial presence in academic writing: A diachronic study of self-reference in science abstracts and full texts</h3>
                     <p class="pub-authors">Wei, Y., Cheng, R., Yao, M.</p>
                     <span class="pub-journal">Journal of English for Research Publication Purposes, 6(1), 66-92.</span>
-                    <div>
-                        <span class="pub-badge">Scopus</span>
-                        <span class="pub-badge">通讯作者</span>
-                    </div>
+                    <div><span class="pub-badge">Scopus</span><span class="pub-badge">通讯作者</span></div>
                 </div>
-
-                <!-- 论文11 -->
-                <div class="pub-item">
-                    <div class="pub-header">
-                        <span class="pub-year">2026</span>
-                    </div>
+                <div class="pub-item" data-year="2026" data-type="esci" data-role="first">
+                    <div class="pub-header"><span class="pub-year">2026</span></div>
                     <h3 class="pub-title">Changing readability of scientific writing: A data mining approach to studying language evolution</h3>
                     <p class="pub-authors">Yao, M., & Wang, H.</p>
                     <span class="pub-journal">Corpora</span>
-                    <div>
-                        <span class="pub-badge">ESCI</span>
-                        <span class="pub-badge">第一作者</span>
-                        <span class="pub-badge">Forthcoming</span>
-                    </div>
+                    <div><span class="pub-badge">ESCI</span><span class="pub-badge">第一作者</span><span class="pub-badge">Forthcoming</span></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 项目参与 -->
-    <section class="section" id="projects">
+    <section id="projects">
         <div class="container">
             <div class="section-title">
                 <h2>科研项目</h2>
-                <p>主持或参与的项目与课题</p>
             </div>
             <div class="project-list">
-                <!-- 项目1 -->
-                <div class="project-item">
-                    <h3 class="project-title">参与 网络空间社会治理语言问题研究（20&ZD299）</h3>
-                    <span class="project-org">国家社科基金2020重大项目</span>
-                </div>
-                
-                <!-- 项目2 -->
-                <div class="project-item">
-                    <h3 class="project-title">参与 回应突发舆情的政务微博话语及政务语言能力建设研究（20AYY009）</h3>
-                    <span class="project-org">国家社科基金2020重点项目</span>
-                </div>
-                
-                <!-- 项目3 -->
-                <div class="project-item">
-                    <h3 class="project-title">参与 语言文字一流学科建设现状、面临形势和发展方向研究（ZDI145-137）</h3>
-                    <span class="project-org">国家语委"十四五"科研规划2024年部级重点项目</span>
-                </div>
+                <div class="project-item"><h3 class="project-title">参与 网络空间社会治理语言问题研究（20&ZD299）</h3><span class="project-org">国家社科基金2020重大项目</span></div>
+                <div class="project-item"><h3 class="project-title">参与 回应突发舆情的政务微博话语及政务语言能力建设研究（20AYY009）</h3><span class="project-org">国家社科基金2020重点项目</span></div>
+                <div class="project-item"><h3 class="project-title">参与 语言文字一流学科建设现状、面临形势和发展方向研究（ZDI145-137）</h3><span class="project-org">国家语委"十四五"科研规划2024年部级重点项目</span></div>
             </div>
         </div>
     </section>
 
     <!-- 联系方式 -->
-    <section class="section" id="contact">
+    <section id="contact">
         <div class="container">
             <div class="section-title">
                 <h2>联系方式</h2>
-                <p>欢迎学术交流与合作</p>
             </div>
             <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div>
-                        <h3>电子邮箱</h3>
-                        <p><a href="mailto:yao_mingx@163.com">yao_mingxin@sisu.edu.cn</a></p>
-                        <p><a href="mailto:yao_mingx@163.com">yao_mingx@163.com</a></p>             
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div>
-                        <h3>工作机构</h3>
-                        <p>四川外国语大学商务英语学院</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <div>
-                        <h3>教授课程</h3>
-                        <p>本科生：商务统计基础、综合商务英语、高级商务英语听力</p>
-                        <p>研究生：语料库语言学、计算语言学</p>
-                    </div>
-                </div>
+                <div class="contact-item"><div class="contact-icon"><i class="fas fa-envelope"></i></div><h3>电子邮箱</h3><p><a href="mailto:yao_mingxin@sisu.edu.cn">机构：yao_mingxin@sisu.edu.cn</a></p><p><a href="mailto:yao_mingx@163.com">个人：yao_mingx@163.com</a></p></div>
+                <div class="contact-item"><div class="contact-icon"><i class="fas fa-university"></i></div><h3>工作机构</h3><p>四川外国语大学商务英语学院</p></div>
+                <div class="contact-item"><div class="contact-icon"><i class="fas fa-book-open"></i></div><h3>教授课程</h3><p>本科生：商务统计基础（2025、2026）、综合商务英语（2025）、高级商务英语听力（2026）</p><p>研究生：语料库语言学、计算语言学</p></div>
             </div>
         </div>
     </section>
 
-    <!-- 页脚 -->
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="https://www.researchgate.net/profile/Mingxin-Yao" class="social-link">ResearchGate</a> |
-                <a href="#" class="social-link">Google Scholar</a> |
-                <a href="https://orcid.org/0000-0002-4763-9413" class="social-link">ORCID</a>
+                <a href="https://www.researchgate.net/profile/Mingxin-Yao" class="social-link" target="_blank">ResearchGate</a>
+                <a href="#" class="social-link" id="gsPlaceholder">Google Scholar</a>
+                <a href="https://orcid.org/0000-0002-4763-9413" class="social-link" target="_blank">ORCID</a>
             </div>
             <p class="copyright">&copy; 2025 姚明鑫. 保留所有权利。</p>
         </div>
     </footer>
 
+    <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
     <script>
-        // 导航栏滚动效果
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
+        (function() {
+            // 筛选逻辑 + 动态计数
+            const pubItems = document.querySelectorAll('#pubList .pub-item');
+            const filterBtns = document.querySelectorAll('.filter-btn');
             
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
-            } else {
-                header.style.boxShadow = 'none';
-            }
-        });
-        
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
+            // 辅助：判断类型/角色
+            function matchesFilter(item, filterType) {
+                if(filterType === 'all') return true;
+                const year = parseInt(item.getAttribute('data-year'));
+                const typeAttr = item.getAttribute('data-type');
+                const role = item.getAttribute('data-role');
+                // 获取badge文本内容 (用于更精准匹配)
+                const badges = Array.from(item.querySelectorAll('.pub-badge')).map(b => b.innerText.toLowerCase());
+                const fullText = item.innerText.toLowerCase();
                 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+                if(filterType === 'first_correspond') {
+                    if(role === 'first' || role === 'correspond') return true;
+                    if(badges.some(b => b.includes('第一作者') || b.includes('通讯作者'))) return true;
+                    if(fullText.includes('第一作者') || fullText.includes('通讯作者')) return true;
+                    return false;
+                }
+                if(filterType === 'ssci_sci') {
+                    if(typeAttr === 'ssci') return true;
+                    if(badges.some(b => b.includes('ssci') || b.includes('sci') || b.includes('ssci q'))) return true;
+                    return false;
+                }
+                if(filterType === 'domestic_core') {
+                    if(typeAttr === 'domestic') return true;
+                    if(badges.some(b => b.includes('cssci') || b.includes('c刊'))) return true;
+                    if(fullText.includes('外语教学') || fullText.includes('cssci')) return true;
+                    return false;
+                }
+                if(filterType === 'recent') {
+                    return year >= 2024;
+                }
+                return false;
+            }
+            
+            function updateCounters() {
+                const total = pubItems.length;
+                let firstCorr = 0, ssci = 0, domestic = 0, recent = 0;
+                pubItems.forEach(item => {
+                    if(matchesFilter(item, 'first_correspond')) firstCorr++;
+                    if(matchesFilter(item, 'ssci_sci')) ssci++;
+                    if(matchesFilter(item, 'domestic_core')) domestic++;
+                    if(matchesFilter(item, 'recent')) recent++;
+                });
+                document.getElementById('countAll').innerText = total;
+                document.getElementById('countFirstCorr').innerText = firstCorr;
+                document.getElementById('countSSCI').innerText = ssci;
+                document.getElementById('countDomestic').innerText = domestic;
+                document.getElementById('countRecent').innerText = recent;
+            }
+            
+            function filterPublication(filterVal) {
+                pubItems.forEach(item => {
+                    if(matchesFilter(item, filterVal)) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                updateCounters();
+            }
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const filterVal = this.getAttribute('data-filter');
+                    filterPublication(filterVal);
                 });
             });
-        });
+            
+            // 初始显示全部 & 计数
+            filterPublication('all');
+            
+            // 导航栏滚动阴影 + 高亮节选(可选不加高亮，只加强交互)
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if(window.scrollY > 20) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+                // 返回顶部按钮
+                const backBtn = document.getElementById('backToTop');
+                if(window.scrollY > 400) backBtn.classList.add('show');
+                else backBtn.classList.remove('show');
+            });
+            
+            // 平滑滚动+偏移修正固定导航
+            document.querySelectorAll('.nav-links a[href^="#"], .logo[href="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if(this.getAttribute('href') === '#') {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        return;
+                    }
+                    const targetId = this.getAttribute('href');
+                    if(targetId && targetId !== '#') {
+                        e.preventDefault();
+                        const targetElem = document.querySelector(targetId);
+                        if(targetElem) {
+                            const offsetTop = targetElem.offsetTop - 70;
+                            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+            
+            // 返回顶部逻辑
+            const backBtn = document.getElementById('backToTop');
+            backBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // 添加手风琴效果? 保持论文hover精致，再增加一点兴趣点击控制台交互
+            const interests = document.querySelectorAll('.interest-item');
+            interests.forEach(interest => {
+                interest.addEventListener('click', () => {
+                    console.log(`研究兴趣: ${interest.innerText}`);
+                });
+            });
+            
+            // Google Scholar占位友好提醒
+            const gsLink = document.getElementById('gsPlaceholder');
+            if(gsLink) {
+                gsLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('个人学术主页完善中，敬请通过ResearchGate或邮件联系。');
+                });
+            }
+        })();
     </script>
 </body>
 </html>
