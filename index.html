@@ -172,6 +172,7 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
+            overflow: hidden;          /* 新增：裁剪超出圆角的图片部分 */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -515,7 +516,7 @@
                 </div>
                 <div class="profile-img">
                     <div class="avatar-placeholder">
-                        <img src="img.jpg" alt="姚明鑫" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="img.jpg" alt="姚明鑫" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                     </div>
                 </div>
             </div>
