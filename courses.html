@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Courses · Mingxin Yao</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ---------- 子页：课程 ---------- */
+        .courses-hero {
+            padding: 76px 0 56px;
+            background:
+                radial-gradient(1200px 500px at 15% -10%, #dbe7ff 0%, transparent 60%),
+                radial-gradient(900px 420px at 90% 0%, #cfe0ff 0%, transparent 55%),
+                var(--surface);
+        }
+        .courses-hero h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.6px;
+            color: var(--ink);
+            line-height: 1.15;
+            margin-bottom: 14px;
+        }
+        .courses-hero p {
+            font-size: 0.98rem;
+            color: var(--ink-soft);
+            max-width: 60ch;
+        }
+        .keep-one-line {
+            white-space: nowrap;
+        }
+
+        .course-group {
+            margin-bottom: 48px;
+        }
+        .course-group:last-child {
+            margin-bottom: 0;
+        }
+        .group-head {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .group-icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            box-shadow: 0 10px 22px var(--violet-glow);
+        }
+        .group-head h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: -0.2px;
+            line-height: 1.2;
+        }
+        .group-head p {
+            font-size: 0.82rem;
+            color: var(--ink-faint);
+            margin-top: 2px;
+        }
+
+        .course-list {
+            list-style: none;
+            border-top: 1px solid var(--border);
+        }
+        .course-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 6px;
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .course-row:hover {
+            padding-left: 14px;
+            background: var(--bg);
+        }
+        .course-main {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+        .course-dot {
+            flex-shrink: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        }
+        .course-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.4;
+        }
+        .course-years {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+        .course-year {
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: var(--soft-ink);
+            background: var(--soft);
+            border: 1px solid var(--soft-2);
+            padding: 3px 11px;
+            border-radius: 20px;
+            letter-spacing: 0.01em;
+        }
+
+        /* 下载按钮 */
+        .dl-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: var(--accent-deep);
+            background: var(--surface);
+            border: 1px solid var(--accent-soft-2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .dl-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-deep);
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            margin-top: 16px;
+        }
+        .back-home:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 640px) {
+            .course-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .courses-hero h1 {
+                font-size: 2.1rem;
+            }
+            .keep-one-line {
+                white-space: normal;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo"><span class="dot"></span>Mingxin Yao</a>
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#publications">Publications</a></li>
+                    <li><a href="research.html">Ongoing Research</a></li>
+                    <li><a href="courses.html" class="active">Courses</a></li>
+                    <li><a href="index.html#projects">Service</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="courses-hero">
+        <div class="container">
+            <span class="eyebrow" style="display:inline-block;font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 14px;border-radius:30px;margin-bottom:14px;">Teaching</span>
+            <h1>Courses</h1>
+            <p class="keep-one-line">Courses taught at the School of Business English, Sichuan International Studies University.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <!-- 本科课程 -->
+            <div class="course-group">
+                <div class="group-head">
+                    <span class="group-icon"><i class="fas fa-user-graduate"></i></span>
+                    <div>
+                        <h2>Undergraduate Courses</h2>
+                        <p>本科课程</p>
+                    </div>
+                </div>
+                <ul class="course-list">
+                    <li class="course-row">
+                        <div class="course-main"><span class="course-dot"></span><span class="course-name">Basics in Business Statistics</span></div>
+                        <div class="course-years"><span class="course-year">2025</span><span class="course-year">2026</span></div>
+                    </li>
+                    <li class="course-row">
+                        <div class="course-main"><span class="course-dot"></span><span class="course-name">Business English</span></div>
+                        <div class="course-years"><span class="course-year">2025</span></div>
+                    </li>
+                    <li class="course-row">
+                        <div class="course-main"><span class="course-dot"></span><span class="course-name">Advanced Business English Listening</span></div>
+                        <div class="course-years"><span class="course-year">2026</span></div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 研究生课程 -->
+            <div class="course-group">
+                <div class="group-head">
+                    <span class="group-icon"><i class="fas fa-chalkboard-teacher"></i></span>
+                    <div>
+                        <h2>Graduate Courses</h2>
+                        <p>研究生课程</p>
+                    </div>
+                </div>
+                <ul class="course-list">
+                    <li class="course-row">
+                        <div class="course-main"><span class="course-dot"></span><span class="course-name">Corpus Linguistics</span></div>
+                        <div class="course-years"><span class="course-year">2026</span></div>
+                    </li>
+                    <li class="course-row">
+                        <div class="course-main"><span class="course-dot"></span><span class="course-name">Language Intelligence and Business Analytics</span></div>
+                        <div class="course-years"><span class="course-year">2026</span></div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 课程资源 -->
+            <div class="course-group">
+                <div class="group-head">
+                    <span class="group-icon"><i class="fas fa-download"></i></span>
+                    <div>
+                        <h2>Course Resources</h2>
+                        <p>教材配套资料，可直接下载</p>
+                    </div>
+                </div>
+                <ul class="course-list">
+                    <li class="course-row">
+                        <div class="course-main"><span class="course-dot"></span><span class="course-name">01 · 数据类型、运算符与输入函数</span></div>
+                        <div class="course-years">
+                            <a class="dl-btn" href="Course resource/01_数据类型、运算符与输入函数.py" download><i class="fas fa-download"></i> 下载</a>
+                        </div>
+                    </li>
+                    <li class="course-row">
+                        <div class="course-main"><span class="course-dot"></span><span class="course-name">02 · 过程控制与 while 循环</span></div>
+                        <div class="course-years">
+                            <a class="dl-btn" href="Course resource/02_过程控制与while循环.py" download><i class="fas fa-download"></i> 下载</a>
+                        </div>
+                    </li>
+                    <li class="course-row">
+                        <div class="course-main"><span class="course-dot"></span><span class="course-name">03 · 条件判断与 for 循环</span></div>
+                        <div class="course-years">
+                            <a class="dl-btn" href="Course resource/03_条件判断与for循环.py" download><i class="fas fa-download"></i> 下载</a>
+                        </div>
+                    </li>
+                    <li class="course-row">
+                        <div class="course-main"><span class="course-dot"></span><span class="course-name">04 · pandas 数据分析与 DataFrame</span></div>
+                        <div class="course-years">
+                            <a class="dl-btn" href="Course resource/04_pandas数据分析与dataframe.py" download><i class="fas fa-download"></i> 下载</a>
+                        </div>
+                    </li>
+                    <li class="course-row">
+                        <div class="course-main"><span class="course-dot"></span><span class="course-name">数据文件 · 04_data.csv</span></div>
+                        <div class="course-years">
+                            <a class="dl-btn" href="Course resource/04_data.csv" download><i class="fas fa-download"></i> 下载</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to home</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.researchgate.net/profile/Mingxin-Yao" class="social-link" target="_blank"><i class="fab fa-researchgate"></i>ResearchGate</a>
+                <a href="https://orcid.org/0000-0002-4763-9413" class="social-link" target="_blank"><i class="fab fa-orcid"></i>ORCID</a>
+            </div>
+            <p class="copyright">&copy; 2025 Mingxin Yao. Copyrights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></div>
+
+    <script>
+        (function() {
+            const header = document.getElementById('header');
+            const backBtn = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.scrollY > 20);
+                backBtn.classList.toggle('show', window.scrollY > 400);
+            }, { passive: true });
+            backBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+    </script>
+</body>
+</html>
