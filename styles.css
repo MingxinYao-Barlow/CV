@@ -1,0 +1,309 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --ink: #1a2438;
+    --ink-soft: #4a5673;
+    --ink-faint: #8491a8;
+    --accent: #1d4ed8;
+    --accent-deep: #1e40af;
+    --accent-2: #2563eb;
+    --accent-soft: #eef4ff;
+    --border: #e3e8f0;
+    --bg: #f7f9fc;
+    --surface: #ffffff;
+    --primary: #12233f;
+    --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    line-height: 1.65;
+    background-color: var(--surface);
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- 页头 ---------- */
+header {
+    padding: 40px 0 16px;
+    border-bottom: 1px solid var(--border);
+}
+.site-title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+}
+.site-title a {
+    color: var(--ink);
+    text-decoration: none;
+}
+.site-nav {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+}
+.site-nav a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+}
+.site-nav a:hover {
+    text-decoration: underline;
+}
+.site-nav a.active {
+    font-weight: 700;
+}
+
+/* ---------- 主体 ---------- */
+main {
+    padding: 30px 0 40px;
+}
+section {
+    margin-bottom: 34px;
+}
+h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    line-height: 1.25;
+    margin-bottom: 16px;
+}
+h2 {
+    font-size: 1.28rem;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+}
+h3 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+p {
+    margin-bottom: 12px;
+}
+ol, ul {
+    padding-left: 24px;
+    margin-bottom: 14px;
+}
+li {
+    margin-bottom: 5px;
+}
+em {
+    color: inherit;
+}
+strong {
+    font-weight: 700;
+}
+
+/* 头像 + 简介 */
+.home-intro {
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+.home-photo {
+    float: left;
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 4px 22px 12px 0;
+    border: 1px solid var(--border);
+}
+.lead-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+/* 招聘高亮 */
+.hiring-note {
+    margin: 18px 0;
+    padding: 14px 18px;
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* 列表样式（成果 / 成员 / 课程等） */
+.entry-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.entry-list li {
+    padding: 12px 0;
+}
+.entry-list.row li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+.entry-list.row li .entry-title {
+    flex: 1;
+    min-width: 0;
+}
+.entry-list.row li .entry-meta {
+    margin-top: 0;
+    flex-shrink: 0;
+    text-align: right;
+}
+.entry-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.45;
+}
+.entry-meta {
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+    margin-top: 3px;
+}
+.entry-meta .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--accent-deep);
+    background: var(--accent-soft);
+    border: 1px solid #dbe7fe;
+    padding: 1px 8px;
+    border-radius: 20px;
+    margin-right: 6px;
+    margin-top: 3px;
+}
+.entry-meta .tag.hl {
+    color: #b45309;
+    background: #fff7ed;
+    border-color: #fed7aa;
+}
+.entry-meta .tag.ok {
+    color: #047857;
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+}
+.entry-meta a {
+    color: var(--accent-deep);
+}
+
+/* 筛选栏 */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0 8px;
+}
+.filter-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 5px 13px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s ease;
+}
+.filter-btn .pub-count {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--ink-faint);
+}
+.filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent-deep);
+}
+.filter-btn.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+.filter-btn.active .pub-count {
+    color: white;
+}
+.year-select {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 5px 28px 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    cursor: pointer;
+    font-family: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+}
+.year-select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* ---------- 页脚 ---------- */
+footer {
+    padding: 22px 0 36px;
+    border-top: 1px solid var(--border);
+    color: var(--ink-faint);
+    font-size: 0.85rem;
+}
+footer .social-links {
+    margin-bottom: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+footer .social-links a {
+    color: var(--accent);
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 640px) {
+    body {
+        padding: 0 18px;
+    }
+    .site-title {
+        font-size: 1.6rem;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    .home-photo {
+        float: none;
+        display: block;
+        width: 110px;
+        height: 110px;
+        margin: 0 0 14px 0;
+    }
+}
